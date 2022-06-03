@@ -9,6 +9,8 @@ REVISION = 0
 
 include ./provider.mk
 
+TEST_FLAGS := --release -- --nocapture
+
 test::
 	cargo clippy --all-targets --all-features
-
+	cargo test $(TEST_FLAGS)

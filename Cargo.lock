@@ -556,6 +556,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "embe-interface-storage"
+version = "0.1.0"
+dependencies = [
+ "async-trait",
+ "serde",
+ "serde_bytes",
+ "wasmbus-rpc",
+ "weld-codegen",
+]
+
+[[package]]
 name = "encoding_rs"
 version = "0.8.31"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2084,10 +2095,10 @@ name = "storage"
 version = "0.1.0"
 dependencies = [
  "async-trait",
+ "embe-interface-storage",
  "log",
  "tokio",
  "wasmbus-rpc",
- "wasmcloud-interface-factorial",
  "wasmcloud-test-util",
 ]
 
@@ -2655,21 +2666,6 @@ dependencies = [
  "uuid",
  "wascap",
  "wasmbus-macros",
- "weld-codegen",
-]
-
-[[package]]
-name = "wasmcloud-interface-factorial"
-version = "0.4.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1da5aa9c866946e1d6924a63c4fc8935ce83f05279e9c4140a3f5a87436d0f1b"
-dependencies = [
- "async-trait",
- "futures 0.3.21",
- "serde",
- "serde_bytes",
- "serde_json",
- "wasmbus-rpc",
  "weld-codegen",
 ]
 

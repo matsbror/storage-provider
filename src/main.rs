@@ -3,7 +3,7 @@
 //!
 use log::debug;
 use wasmbus_rpc::provider::prelude::*;
-use embe_interface_storage::{ Storage, StorageProvider };
+use embe_interface_storage::*;
 
 // main (via provider_main) initializes the threaded tokio executor,
 // listens to lattice rpcs, handles actor links,
@@ -29,24 +29,13 @@ impl ProviderHandler for StorageProvider {}
 #[async_trait]
 impl Storage for StorageProvider {
     /// accepts a number and calculates its factorial
-    async fn create_handle(&self, _ctx: &Context, req: &HandleRequest) -> RpcResult<RequestReply> {
+    async fn create_handle(&self, _ctx: &Context, _req: &HandleRequest) -> RpcResult<RequestReply> {
 
-        Ok(Req)
-    }
-}
+        let repl = RequestReply {
+            handle: Some(1234),
+            error_message: None
+        };
 
-/// calculate n factorial
-fn n_factorial(n: u32) -> u64 {
-    match n {
-        0 => 1,
-        1 => 1,
-        _ => {
-            let mut result = 1u64;
-            // add 1 because rust ranges exclude upper bound
-            for v in 2..(n + 1) {
-                result *= v as u64;
-            }
-            result
-        }
+        Ok(repl)
     }
 }
